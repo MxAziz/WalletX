@@ -1,13 +1,14 @@
+import { Outlet } from 'react-router'
 import './App.css'
-import { Button } from './components/ui/button'
+import { CommonLayout } from './components/layout/CommonLayout'
 
 function App() {
 
   return (
     <>
-
-      <h1>Vite + React</h1>
-      <Button>click here</Button>
+      <CommonLayout>
+        <Outlet></Outlet>
+      </CommonLayout>
     </>
   )
 }
