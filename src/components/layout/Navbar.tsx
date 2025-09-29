@@ -1,118 +1,120 @@
-import Logo from "@/assets/icons/Logo"
-import { Button } from "@/components/ui/button"
+
+
+"use client";
+
+import { MenuIcon } from "lucide-react";
+
+import Logo from "@/assets/icons/Logo";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu"
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { Link } from "react-router"
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Link } from "react-router";
 
-// Navigation links array to be used in both desktop and mobile menus
-const navigationLinks = [
-  { href: "#", label: "Home", active: true },
-  { href: "#", label: "Features" },
-  { href: "#", label: "Pricing" },
-  { href: "#", label: "About" },
-]
+const NavbarMenuList = [
+  {
+    title: "Home",
+    href: "#",
+  },
+  {
+    title: "About",
+    href: "#",
+  },
+  {
+    title: "Features",
+    description: "Configure your preferences",
+    href: "#",
+  },
+  {
+    title: "Contact",
+    description: "Connect with other tools",
+    href: "#",
+  },
+];
 
-export default function Component() {
+export const Navbar = () => {
   return (
-    <header className="border-b px-4 md:px-6">
-      <div className="flex h-16 items-center justify-between gap-4">
-        {/* Left side */}
-        <div className="flex items-center gap-2">
-          {/* Mobile menu trigger */}
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                className="group size-8 md:hidden"
-                variant="ghost"
-                size="icon"
-              >
-                <svg
-                  className="pointer-events-none"
-                  width={16}
-                  height={16}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 12L20 12"
-                    className="origin-center -translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]"
-                  />
-                  <path
-                    d="M4 12H20"
-                    className="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-aria-expanded:rotate-45"
-                  />
-                  <path
-                    d="M4 12H20"
-                    className="origin-center translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
-                  />
-                </svg>
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent align="start" className="w-36 p-1 md:hidden">
-              <NavigationMenu className="max-w-none *:w-full">
-                <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                  {navigationLinks.map((link, index) => (
-                    <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink
-                        href={link.href}
-                        className="py-1.5"
-                        active={link.active}
-                      >
-                        {link.label}
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </PopoverContent>
-          </Popover>
-          {/* Main nav */}
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-primary hover:text-primary/90">
-              <Logo />
-            </a>
-            {/* Navigation menu */}
-            <NavigationMenu className="max-md:hidden">
-              <NavigationMenuList className="gap-2">
-                {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      active={link.active}
-                      href={link.href}
-                      className="text-muted-foreground hover:text-primary py-1.5 font-medium"
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
+    <section className="py-4">
+      <div className="container">
+        <nav className="flex items-center justify-around">
+          <div className="flex justify-center items-center gap-3">
+          <Link to="/">
+            <Logo />
+          </Link>
+          <h1 className="text-4xl font-bold">WalletX</h1>
           </div>
-        </div>
-        {/* Right side */}
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm" className="text-sm">
-            <Link to="/login">Login</Link>
-          </Button>
-          <Button asChild size="sm" className="text-sm">
-            <Link to="/register">Register</Link>
-          </Button>
-        </div>
+          <NavigationMenu className="hidden lg:block">
+            <NavigationMenuList>
+              {NavbarMenuList.map((item) => (
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    href={item.href}
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    {item.title}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <div className="hidden items-center gap-4 lg:flex">
+            <Button variant="outline">
+              {" "}
+              <Link to="/login">Login</Link>{" "}
+            </Button>
+            <Button className="rounded-4xl">
+              <Link to="/Register">Register</Link>{" "}
+            </Button>
+          </div>
+
+          <Sheet>
+            <SheetTrigger asChild className="lg:hidden">
+              <Button variant="outline" size="icon">
+                <MenuIcon className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="top" className="max-h-screen overflow-auto">
+              <SheetHeader>
+                <SheetTitle>
+                  <Link to="/">
+                    <Logo />
+                  </Link>
+                </SheetTitle>
+              </SheetHeader>
+
+              <div className="flex flex-col p-4">
+                <div className="flex flex-col gap-6">
+                  {NavbarMenuList.map((item) => (
+                    <Link to={item.href} className="font-medium">
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-6 flex flex-col gap-4">
+                  <Button variant="outline">
+                    <Link to="/login">Login</Link>
+                  </Button>
+                  <Button>
+                    <Link to="/register">Register</Link>
+                  </Button>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </nav>
       </div>
-    </header>
-  )
-}
+    </section>
+  );
+};
