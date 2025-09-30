@@ -45,9 +45,9 @@ const NavbarMenuList = [
 
 export const Navbar = () => {
   return (
-    <section className="py-4">
+    <section className="py-4 px-4 z-50">
       <div className="container">
-        <nav className="flex items-center justify-around">
+        <nav className="flex items-center justify-between sticky">
           <div className="flex justify-center items-center gap-3">
           <Link to="/">
             <Logo />

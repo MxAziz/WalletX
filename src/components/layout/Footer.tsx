@@ -5,9 +5,9 @@ const Footer = () => {
     <footer className="bg-white dark:bg-gray-800">
       <div className="mx-auto container space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <div className=" flex items-center justify-center gap-3">
+          <div className=" flex items-center sm:justify-center gap-3">
             <Logo />
-            <strong className="text-3xl font-bold bg-gradient-to-t from-[#ff3801] to-[#ffb300] bg-clip-text text-transparent">
+            <strong className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
              WalletX
             </strong>
           </div>
