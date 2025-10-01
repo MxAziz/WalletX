@@ -21,6 +21,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Link } from "react-router";
+import { ModeToggle } from "../theme/Mode-Toggle";
 
 const NavbarMenuList = [
   {
@@ -70,6 +71,7 @@ export const Navbar = () => {
           </NavigationMenu>
 
           <div className="hidden items-center gap-4 lg:flex">
+            <ModeToggle></ModeToggle>
             <Button variant="outline">
               {" "}
               <Link to="/login">Login</Link>{" "}
@@ -103,6 +105,7 @@ export const Navbar = () => {
                   ))}
                 </div>
                 <div className="mt-6 flex flex-col gap-4">
+                  <ModeToggle></ModeToggle>
                   <Button variant="outline">
                     <Link to="/login">Login</Link>
                   </Button>
