@@ -39,7 +39,7 @@ const NavbarMenuList = [
   },
   {
     title: "Contact",
-    description: "Connect with other tools",
+
     href: "#",
   },
 ];
