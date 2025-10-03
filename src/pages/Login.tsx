@@ -1,6 +1,7 @@
 import Logo from "@/assets/icons/Logo";
 import { LoginForm } from "@/components/modules/authentication/LoginForm";
 import { Button } from "@/components/ui/button";
+import { MoveLeft } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export default function Login() {
@@ -9,14 +10,18 @@ export default function Login() {
   return (
     <div>
       <div className="flex justify-around items-center py-6 ">
+        <div className="flex justify-center items-center gap-3 text-3xl font-bold">
         <Logo />
+        WalletX
+        </div>
         <Button
           onClick={() => navigate("/")}
           variant="ghost"
           size="lg"
-          className="hover:bg-muted cursor-pointer rounded-full"
+          className="bg-muted cursor-pointer rounded-full flex items-center gap-2 hover:gap-3 justify-center"
         >
-          <span className="text-2xl">X</span>
+          <MoveLeft className="size-6"></MoveLeft>
+          <span className="text-lg"> Back Home</span>
         </Button>
       </div>
       <hr />
