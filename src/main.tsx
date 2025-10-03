@@ -4,11 +4,17 @@ import './index.css'
 import { RouterProvider } from 'react-router'
 import { router } from './routes/index.tsx'
 import { ThemeProvider } from './components/theme/ThemeProvider.tsx'
+import { Toaster } from 'sonner'
+import { Provider } from 'react-redux'
+import { store } from './redux/store.ts'
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme='system' storageKey="vite-ui-theme">
-    <RouterProvider router={router}></RouterProvider>
-    </ThemeProvider>
-  </StrictMode>,
-)
+    <Provider store={store}>
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        <RouterProvider router={router}></RouterProvider>
+        <Toaster richColors expand={true} position="top-right" />
+      </ThemeProvider>
+    </Provider>
+  </StrictMode>
+);

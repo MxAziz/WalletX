@@ -1,9 +1,4 @@
-
-
-"use client";
-
 import { MenuIcon } from "lucide-react";
-
 import Logo from "@/assets/icons/Logo";
 import { Button } from "@/components/ui/button";
 import {
@@ -39,7 +34,7 @@ const NavbarMenuList = [
   },
   {
     title: "Contact",
-
+    description: "Get in touch with us",
     href: "#",
   },
 ];
