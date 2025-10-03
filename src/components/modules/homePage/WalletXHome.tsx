@@ -14,7 +14,7 @@ const WalletXHome = () => {
   return (
     <div className={`min-h-screen ${bgClass} ${textClass} transition-colors duration-300`}>
       {/* Theme Toggle Button */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed bottom-4 right-4 z-50">
         <button
           onClick={() => setIsDark(!isDark)}
           className={`p-3 rounded-full ${cardBgClass} border ${borderClass} shadow-lg hover:scale-110 transition-transform`}
