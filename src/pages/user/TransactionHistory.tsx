@@ -1,7 +1,9 @@
+import TransactionTable from "@/components/modules/transaction/TransactionTable";
+
 export default function TransactionHistory() {
   return (
-    <div>
-      <h1>This is TransactionHistory Component</h1>
+    <div className="py-10">
+      <TransactionTable />
     </div>
   );
 }

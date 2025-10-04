@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -99,6 +100,7 @@ export const TransactionForm = () => {
   const [cashin] = useCashInMutation();
   const [cashout] = useCashOutMutation();
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   const mutation: Record<string, Function> = {
     deposit,
     withdraw,
