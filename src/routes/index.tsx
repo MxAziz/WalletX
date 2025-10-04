@@ -11,6 +11,7 @@ import Analytics from "@/pages/admin/Analytics";
 import { checkAuth } from "@/utils/checkAuth";
 import { role } from "@/constants";
 import type { TRole } from "@/types";
+import { UserAgentCommonSidebar } from "./sidebar/UserAgentSidebar";
 
 export const router = createBrowserRouter([
   {
@@ -25,15 +26,17 @@ export const router = createBrowserRouter([
   },
   { path: "/login", Component: Login },
   { path: "/register", Component: Register },
+
   {
-    Component: checkAuth(DashboardLayout, role.user as TRole),
-    path: "/user/my-wallet",
-    children: [...generateRoutes(UserSidebar)],
-  },
-  {
-    Component: checkAuth(DashboardLayout, role.agent as TRole),
-    path: "/agent/my-wallet",
-    children: [...generateRoutes(AgentSidebar)],
+    Component: checkAuth(DashboardLayout, ...(Object.values(role) as [TRole])),
+    path: "/my-wallet",
+    children: [
+      ...generateRoutes(
+        ...UserAgentCommonSidebar,
+        ...UserSidebar,
+        ...AgentSidebar
+      ),
+    ],
   },
 
   {

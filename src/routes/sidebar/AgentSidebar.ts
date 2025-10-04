@@ -1,46 +1,23 @@
+import { role } from "@/constants";
 import CashIn from "@/pages/user/CashIn";
 import CashOut from "@/pages/user/CashOut";
-import MyWallet from "@/pages/user/MyWallet";
-import Settings from "@/pages/user/Settings";
-import TransactionHistory from "@/pages/user/TransactionHistory";
-import {
-  LucideMoveDownLeft,
-  SendIcon,
-  SendToBackIcon,
-  Settings2,
-  Wallet2Icon,
-} from "lucide-react";
+import type { ISidebarItem, TRole } from "@/types";
+import { checkAuth } from "@/utils/checkAuth";
+import { SendIcon, SendToBackIcon } from "lucide-react";
 
-export const AgentSidebar = [
+export const AgentSidebar: ISidebarItem[] = [
   {
-    title: "My Wallet",
-    url: "/agent/my-wallet",
-    icon: Wallet2Icon,
-    // isActive: true,
-    Component: MyWallet,
-  },
-  {
+    group: "middle",
     title: "Cash In",
-    url: "/agent/my-wallet/cashin",
+    url: "/my-wallet/cashin",
     icon: SendIcon,
-    Component: CashIn,
+    Component: checkAuth(CashIn, role.agent as TRole),
   },
   {
+    group: "middle",
     title: "Cash Out",
-    url: "/agent/my-wallet/cashout",
+    url: "/my-wallet/cashout",
     icon: SendToBackIcon,
-    Component: CashOut,
-  },
-  {
-    title: "Transaction History",
-    url: "/agent/my-wallet/transactions",
-    icon: LucideMoveDownLeft,
-    Component: TransactionHistory,
-  },
-  {
-    title: "Settings",
-    url: "/agent/my-wallet/settings",
-    icon: Settings2,
-    Component: Settings,
+    Component: checkAuth(CashOut, role.agent as TRole),
   },
 ];

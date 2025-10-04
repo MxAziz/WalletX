@@ -1,54 +1,31 @@
+import { role } from "@/constants";
 import DepositMoney from "@/pages/user/DepositMoney";
-import MyWallet from "@/pages/user/MyWallet";
 import SendMoney from "@/pages/user/SendMoney";
-import Settings from "@/pages/user/Settings";
-import TransactionHistory from "@/pages/user/TransactionHistory";
 import WithdrawMoney from "@/pages/user/WithdrawMoney";
-import {
-  LucideMoveDownLeft,
-  MinusIcon,
-  PlusSquareIcon,
-  SendIcon,
-  Settings2,
-  Wallet2Icon,
-} from "lucide-react";
+import type { ISidebarItem, TRole } from "@/types";
+import { checkAuth } from "@/utils/checkAuth";
+import { BanknoteArrowUp, Forward, SquarePlus } from "lucide-react";
 
-export const UserSidebar = [
+export const UserSidebar: ISidebarItem[] = [
   {
-    title: "My Wallet",
-    url: "/user/my-wallet",
-    icon: Wallet2Icon,
-    // isActive: true,
-    Component: MyWallet,
-  },
-  {
+    group: "middle",
     title: "Deposit",
-    url: "/user/my-wallet/deposit",
-    icon: PlusSquareIcon,
-    Component: DepositMoney,
+    url: "/my-wallet/deposit",
+    icon: SquarePlus,
+    Component: checkAuth(DepositMoney, role.user as TRole),
   },
   {
+    group: "middle",
     title: "Withdraw",
-    url: "/user/my-wallet/withdraw",
-    icon: MinusIcon,
-    Component: WithdrawMoney,
+    url: "/my-wallet/withdraw",
+    icon: BanknoteArrowUp,
+    Component: checkAuth(WithdrawMoney, role.user as TRole),
   },
   {
+    group: "middle",
     title: "Send Money",
-    url: "/user/my-wallet/sendmoney",
-    icon: SendIcon,
-    Component: SendMoney,
-  },
-  {
-    title: "Transaction History",
-    url: "/user/my-wallet/transactions",
-    icon: LucideMoveDownLeft,
-    Component: TransactionHistory,
-  },
-  {
-    title: "Settings",
-    url: "/user/my-wallet/settings",
-    icon: Settings2,
-    Component: Settings,
+    url: "/my-wallet/sendmoney",
+    icon: Forward,
+    Component: checkAuth(SendMoney, role.user as TRole),
   },
 ];
