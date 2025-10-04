@@ -8,6 +8,9 @@ import { createBrowserRouter } from "react-router";
 import { UserSidebar } from "./sidebar/UserSidebar";
 import { AgentSidebar } from "./sidebar/AgentSidebar";
 import Analytics from "@/pages/admin/Analytics";
+import { checkAuth } from "@/utils/checkAuth";
+import { role } from "@/constants";
+import type { TRole } from "@/types";
 
 export const router = createBrowserRouter([
   {
@@ -23,12 +26,12 @@ export const router = createBrowserRouter([
   { path: "/login", Component: Login },
   { path: "/register", Component: Register },
   {
-    Component: DashboardLayout,
+    Component: checkAuth(DashboardLayout, role.user as TRole),
     path: "/user/my-wallet",
     children: [...generateRoutes(UserSidebar)],
   },
   {
-    Component: DashboardLayout,
+    Component: checkAuth(DashboardLayout, role.agent as TRole),
     path: "/agent/my-wallet",
     children: [...generateRoutes(AgentSidebar)],
   },
