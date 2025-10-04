@@ -1,7 +1,9 @@
+import TransactionForm from "@/components/modules/myWallet/TransactionForm";
+
 export default function SendMoney() {
   return (
     <div>
-      <h1>This is SendMoney Component</h1>
+      <TransactionForm />
     </div>
   );
 }
