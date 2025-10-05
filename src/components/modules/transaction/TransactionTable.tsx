@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TableLoader } from "@/components/loaders/TableLoader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
