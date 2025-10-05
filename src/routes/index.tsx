@@ -20,6 +20,7 @@ import UnauthorizedPage from "@/pages/Unauthorized";
 import FAQ from "@/pages/FAQ";
 import Contact from "@/pages/Contact";
 import About from "@/pages/About";
+import Features from "@/pages/Features";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         Component: About,
         path: "/about"
+      },
+      {
+        Component: Features,
+        path: "/features"
       },
       {
         Component: Contact,
