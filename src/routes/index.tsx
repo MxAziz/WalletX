@@ -19,6 +19,7 @@ import NotFound from "@/pages/NotFound";
 import UnauthorizedPage from "@/pages/Unauthorized";
 import FAQ from "@/pages/FAQ";
 import Contact from "@/pages/Contact";
+import About from "@/pages/About";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        Component: About,
+        path: "/about"
       },
       {
         Component: Contact,
