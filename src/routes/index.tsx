@@ -15,6 +15,8 @@ import { AdminSidebar } from "./sidebar/AdminSidebar";
 import SingleTransaction from "@/components/modules/admin/singleView/SingleTransaction";
 import SingleWallet from "@/components/modules/admin/singleView/SingleWallet";
 import SingleUser from "@/components/modules/admin/singleView/SingleUser";
+import NotFound from "@/pages/NotFound";
+import UnauthorizedPage from "@/pages/Unauthorized";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +31,8 @@ export const router = createBrowserRouter([
   },
   { path: "/login", Component: Login },
   { path: "/register", Component: Register },
+    { Component: UnauthorizedPage, path: "/unauthorized" },
+  { Component: NotFound, path: "*" },
 
   {
     Component: checkAuth(DashboardLayout, ...(Object.values(role) as [TRole])),

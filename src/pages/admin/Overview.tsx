@@ -1,6 +1,6 @@
 import RecentJoinedUser from "@/components/modules/admin/overview/RecentJoinedUser";
 import RecentTransaction from "@/components/modules/admin/overview/RecentTransaction";
-import { SectionCards } from "@/components/modules/admin/overview/SectionCards";
+import { SectionCards } from "@/components/modules/admin/overview/SectionCard";
 
 export default function Overview() {
   return (
