@@ -1,7 +1,9 @@
+import AgentsTable from "@/components/modules/admin/AgentsTable";
+
 export default function Agents() {
   return (
     <div>
-      <h1>This is Agents Component</h1>
+      <AgentsTable />
     </div>
   );
 }

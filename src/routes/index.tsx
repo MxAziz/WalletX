@@ -12,6 +12,7 @@ import { role } from "@/constants";
 import type { TRole } from "@/types";
 import { UserAgentCommonSidebar } from "./sidebar/UserAgentSidebar";
 import { AdminSidebar } from "./sidebar/AdminSidebar";
+import SingleViewModal from "@/components/modules/admin/singleView/SingleWallet.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,9 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/dashboard/overview" /> },
       ...generateRoutes(...AdminSidebar),
+      { Component: SingleViewModal, path: "/dashboard/agents/:id" },
+      { Component: SingleViewModal, path: "/dashboard/wallets/:id" },
+      { Component: SingleViewModal, path: "/dashboard/transactions/:id" },
     ],
   },
 ]);
