@@ -4,14 +4,14 @@ import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import { generateRoutes } from "@/utils/generateRoutes";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { UserSidebar } from "./sidebar/UserSidebar";
 import { AgentSidebar } from "./sidebar/AgentSidebar";
-import Analytics from "@/pages/admin/Analytics";
 import { checkAuth } from "@/utils/checkAuth";
 import { role } from "@/constants";
 import type { TRole } from "@/types";
 import { UserAgentCommonSidebar } from "./sidebar/UserAgentSidebar";
+import { AdminSidebar } from "./sidebar/AdminSidebar";
 
 export const router = createBrowserRouter([
   {
@@ -40,8 +40,11 @@ export const router = createBrowserRouter([
   },
 
   {
-    Component: DashboardLayout,
+    Component: checkAuth(DashboardLayout, ...(Object.values(role) as [TRole])),
     path: "/dashboard",
-    children: [{ index: true, Component: Analytics }],
+    children: [
+      { index: true, element: <Navigate to="/dashboard/overview" /> },
+      ...generateRoutes(...AdminSidebar),
+    ],
   },
 ]);
