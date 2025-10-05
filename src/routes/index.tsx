@@ -18,6 +18,7 @@ import SingleUser from "@/components/modules/admin/singleView/SingleUser";
 import NotFound from "@/pages/NotFound";
 import UnauthorizedPage from "@/pages/Unauthorized";
 import FAQ from "@/pages/FAQ";
+import Contact from "@/pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        Component: Contact,
+        path: "/contact",
       },
       {
         Component: FAQ,
