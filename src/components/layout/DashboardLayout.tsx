@@ -7,16 +7,16 @@ import {
 } from "@/components/ui/sidebar";
 import { Outlet } from "react-router";
 import { authApi, useLogoutMutation } from "@/redux/features/auth/auth.api";
-import { useMyWalletQuery } from "@/redux/features/wallet/wallet.api";
 import { useAppDispatch } from "@/redux/hook";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../theme/Mode-Toggle";
+import { useGetMeQuery } from "@/redux/features/user/user.api";
 
 
 export default function DashboardLayout() {
 
-   const { data } = useMyWalletQuery(undefined);
+   const { data } = useGetMeQuery(undefined);
 
   const [logout] = useLogoutMutation();
   const dispatch = useAppDispatch();
@@ -49,7 +49,7 @@ export default function DashboardLayout() {
                 variant="secondary"
                 className="font-bold border-b-2 border-secondary-foreground"
               >
-                {data?.data?.owner?.fullname} (logout)
+              {data?.data?.fullname} (logout)
               </Button>
               <ModeToggle />
             </div>
