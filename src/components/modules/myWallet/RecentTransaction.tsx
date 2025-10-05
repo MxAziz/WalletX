@@ -173,7 +173,7 @@ export default function RecentTransaction({
             </div>
             <h3 className="text-lg font-medium mb-1">No transactions found</h3>
             <p className="text-[var(--muted-foreground)] text-center max-w-md">
-              You haven't made any transactions yet. Start using Bondhu Pay to
+              You haven't made any transactions yet. Start using WalletX to
               see your transaction history here.
             </p>
           </div>
