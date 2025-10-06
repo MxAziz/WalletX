@@ -41,7 +41,7 @@ const formInfo: any = {
   },
   cashin: {
     title: "Cash In to a User",
-    sourceLabel: "Reciever Number",
+    sourceLabel: "Receiver Number",
   },
   cashout: {
     title: "Cash out from a User",

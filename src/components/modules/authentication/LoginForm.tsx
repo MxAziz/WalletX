@@ -53,9 +53,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
         ) {
           navigate("/dashboard");
         } else {
-          // mxaziz
-          // navigate("/my-wallet");
-          navigate("/");
+          navigate("/my-wallet");
         }
       }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

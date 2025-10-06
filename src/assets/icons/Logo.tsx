@@ -3,8 +3,8 @@ const Logo = () => {
       <div>
         <svg
           id="logo-15"
-          width="40"
-          height="40"
+          width="35"
+          height="35"
           viewBox="0 0 49 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

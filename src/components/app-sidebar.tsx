@@ -37,8 +37,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           size="lg"
           className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
         >
-          <div className="grid flex-1 text-left text-sm leading-tight">
+          <div className="flex text-left leading-tight justify-center items-center gap-2 text-3xl font-bold">
             <Logo />
+            WalletX
           </div>
         </SidebarMenuButton>
       </SidebarHeader>
@@ -55,7 +56,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <Collapsible
                 key={item.title}
                 asChild
-                // defaultOpen={item.isActive}
                 className="group/collapsible"
               >
                 <SidebarMenuItem>

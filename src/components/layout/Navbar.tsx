@@ -1,5 +1,4 @@
 import { LogOut, LogOutIcon, MenuIcon, User2, Wallet } from "lucide-react";
-
 import Logo from "@/assets/icons/Logo";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,8 +57,9 @@ export const Navbar = () => {
   const { data } = useGetMeQuery(undefined);
   const [logout] = useLogoutMutation();
   const dispatch = useAppDispatch();
-
   const navigate = useNavigate();
+
+  console.log(data);
   const handleLogout = async () => {
     const res = await logout(undefined).unwrap();
     if (res.success) {
@@ -70,30 +70,23 @@ export const Navbar = () => {
   };
 
   return (
-    <section className="py-4 sticky top-0 z-50 bg-[var(--background)]/90 backdrop-blur-sm border-b border-[var(--border)] shadow-sm transition-all duration-300">
+    <section className="py-4  sticky top-0 z-50 bg-[var(--background)]/90 backdrop-blur-sm border-b border-[var(--border)] shadow-sm transition-all duration-300">
       <div className="container">
-        <nav className="flex items-center justify-around">
-          <Link to="/" className="flex justify-center items-center gap-3 text-3xl font-bold">
-            <Logo />
-            <h1>WalletX</h1>
-          </Link>
+        <nav className="flex items-center justify-around ">
+           <Link to="/" className="flex justify-center items-center gap-3 text-3xl font-bold">
+             <Logo />
+             <h1>WalletX</h1>
+           </Link>
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               {NavbarMenuList.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavLink to={item.href}>
-                    {({ isActive }) => (
-                      <NavigationMenuLink
-                        className={`${navigationMenuTriggerStyle()} ${
-                          isActive
-                            ? "bg-accent text-accent-foreground font-semibold"
-                            : ""
-                        }`}
-                      >
-                        {item.title}
-                      </NavigationMenuLink>
-                    )}
-                  </NavLink>
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    href={item.href}
+                    className={navigationMenuTriggerStyle()}
+                  >
+                    {item.title}
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
@@ -115,7 +108,7 @@ export const Navbar = () => {
                         <Button variant="link">
                           <Wallet className="h-4 w-4" /> My Wallet
                         </Button>
-                      </Link>
+                      </Link>{" "}
                     </DropdownMenuItem>
 
                     <DropdownMenuItem className="text-destructive">
@@ -133,7 +126,7 @@ export const Navbar = () => {
                 <Button asChild variant="outline">
                   <Link to="/login">Login</Link>
                 </Button>
-                <Button asChild className="bg-[#86EFAC] text-black">
+                <Button asChild className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700">
                   <Link to="/Register">Register</Link>
                 </Button>
               </>
@@ -150,9 +143,8 @@ export const Navbar = () => {
             <SheetContent side="top" className="max-h-screen overflow-auto">
               <SheetHeader>
                 <SheetTitle>
-                  <Link className="flex items-center gap-2" to="/">
+                  <Link to="/">
                     <Logo />
-                    <strong className="font-bold text-2xl">WalletX</strong>
                   </Link>
                 </SheetTitle>
               </SheetHeader>
@@ -160,19 +152,13 @@ export const Navbar = () => {
               <div className="flex flex-col p-4">
                 <div className="flex flex-col gap-6">
                   {NavbarMenuList.map((item) => (
-                    <NavLink
+                    <Link
                       to={item.href}
                       key={item.href}
-                      className={({ isActive }) =>
-                        `font-medium ${
-                          isActive
-                            ? "text-primary font-bold border-b-2 border-primary"
-                            : ""
-                        }`
-                      }
+                      className="font-medium"
                     >
                       {item.title}
-                    </NavLink>
+                    </Link>
                   ))}
                 </div>
                 <div className="mt-6 flex flex-col gap-4">
@@ -221,7 +207,7 @@ export const Navbar = () => {
                       <Button asChild variant="outline">
                         <Link to="/login">Login</Link>
                       </Button>
-                      <Button asChild className="rounded-4xl">
+                      <Button asChild className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700">
                         <Link to="/Register">Register</Link>
                       </Button>
                     </>

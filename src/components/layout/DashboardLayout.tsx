@@ -122,13 +122,6 @@ export default function DashboardLayout() {
               >
                 {data?.data?.fullname} (logout)
               </Button>
-              <Button
-                onClick={() => setRunTour(true)}
-                className="cursor-pointer font-bold"
-                variant="link"
-              >
-                Guided Tour
-              </Button>
               <ModeToggle />
             </div>
           </div>
