@@ -69,7 +69,7 @@ export default function Hero() {
           }`}
         >
           <Sparkles className="w-4 h-4 text-purple-400" />
-          <span className="text-sm text-purple-200 font-medium">Powered by Modern Technology</span>
+          <span className="text-sm font-medium text-white">Trusted by 10M+ users worldwide</span>
         </div>
 
         {/* Main heading */}
