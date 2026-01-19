@@ -1,12 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Password from "@/components/ui/Password";
 import { role } from "@/constants";
@@ -25,6 +18,22 @@ const LoginSchema = z.object({
   }),
   password: z.string().min(8, "Password too short"),
 });
+
+// Demo credentials
+const demoCredentials = {
+  admin: {
+    phone: "01555555555",
+    password: "Abcabc3#"
+  },
+  agent: {
+    phone: "01111111111",
+    password: "Abcabc3#"
+  },
+  user: {
+    phone: "01377777777",
+    password: "Thethe3#"
+  }
+};
 
 export function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
 
@@ -63,6 +72,14 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
     }
   };
 
+  // Demo login handler
+  const handleDemoLogin = (type: 'admin' | 'agent' | 'user') => {
+    const credentials = demoCredentials[type];
+    form.setValue('phone', credentials.phone);
+    form.setValue('password', credentials.password);
+    toast.info(`${type.charAt(0).toUpperCase() + type.slice(1)} credentials filled!`);
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col gap-6">
@@ -73,6 +90,40 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
             <Link to="/register" className="underline underline-offset-4">
               Register
             </Link>
+          </div>
+        </div>
+
+        {/* Demo Login Buttons */}
+        <div className="flex flex-col gap-2 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+          <p className="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1">Quick Demo Login:</p>
+          <div className="grid grid-cols-3 gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => handleDemoLogin('admin')}
+              className="text-xs"
+            >
+              Admin
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => handleDemoLogin('agent')}
+              className="text-xs"
+            >
+              Agent
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => handleDemoLogin('user')}
+              className="text-xs"
+            >
+              User
+            </Button>
           </div>
         </div>
 
