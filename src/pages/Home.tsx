@@ -1,4 +1,5 @@
 import Hero from "@/components/modules/homePage/Hero";
+import SecuritySection from "@/components/modules/homePage/SecuritySection";
 import WalletXHome from "@/components/modules/homePage/WalletXHome";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
         <Hero></Hero>
         <WalletXHome></WalletXHome>
+        <SecuritySection></SecuritySection>
     </main>
   );
 }
